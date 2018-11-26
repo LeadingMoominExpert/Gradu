@@ -531,40 +531,25 @@ Since both $\sum_y \kappa_1(x,y) = 1$ and $\sum_Z \kappa_2(y,z) = 1$ and both $\
 
 %----------- EXAMPLE OF POST-PROCESSING ----------------
 \begin{example}
-Let $\A$ and $\B$ be non-sharp qubit observables of the form
+Let $\A$ be a qubit observables of the form
 \begin{align*}
-\A = \dfrac{1}{2}(\id + \vec{a}\cdot\sigma),\quad \norm{\vec{a}} \neq 1, \quad \B = \dfrac{1}{2}(\id + \vec{b}\cdot\sigma),\quad \norm{\vec{b}} \neq 1 \text.
+\A(\pm 1) = \dfrac{1}{2}(\id \pm \vec{a}\cdot\vec{\sigma})\text. 
 \end{align*}
-For post-processing we'll use the matrix 
+To obtain another qubit observable $\B$, we need the applied post-processing $\kappa$ as
 \begin{align*}
-S=\begin{pmatrix}
-s & 1-s \\
-1-s & s
-\end{pmatrix}\text.
+\kappa(+,+) = \kappa(-,-) &= s \\
+\kappa(+,-) = \kappa(-,+) &= 1-s,\quad\text{ where }\,s\in \mathbb{C}\text.
 \end{align*}
-Using $\vec{b} = (b_1, b_2, b_3)$, we can write the post-processed observable as
+Using the above definition of post processing we get
 \begin{align*}
-\A &= \sum S\B\\
-&=\sum \dfrac{1}{2} \begin{pmatrix}
-s & 1-s \\
-1-s & s
-\end{pmatrix}
-(\id + \vec{b}\cdot\vec{\sigma})\\
-&=\sum \dfrac{1}{2} \begin{pmatrix}
-s & 1-s \\
-1-s & s
-\end{pmatrix}
-\begin{pmatrix}
-1+b_3 & b_1-ib_2 \\
-b_1+ib_2 & 1-b_3
-\end{pmatrix}\\
-&=\cdots\\
-&=\sum \dfrac{1}{2}\left((1-s)\begin{pmatrix}
-0 & 1 \\
-1 & 0
-\end{pmatrix}
-(\id + \vec{b}\cdot\vec{\sigma})+s(\id + \vec{b}\cdot\vec{\sigma})\right)
+\B(+1) &= \kappa(+,+)\A(+1) + \kappa(+,-)\A(-1) \\
+&=\frac{1}{2}(s(\id + \vec{a}\cdot\vec{\sigma}) + (1-s)(\id - \vec{a}\cdot\vec{\sigma}))\\
+&=\frac{1}{2}(\id + (2s-1)\vec{a}\cdot\vec{\sigma}),\\
+\B(-1) &= \dfrac{1}{2}(\id - (2s-1)\vec{a}\cdot\vec{\sigma})\\
+\Rightarrow \B(\pm 1) &= \frac{1}{2}(\id \pm (2s-1)\vec{a}\cdot\vec{\sigma})\text.
 \end{align*}
+So the chosen post-processing applied on the observable $\A$ yields an observable $\B$, which is almost the same as $\A$, but with the added noise factor $(2s-1)$. 
+
 
 \end{example}
 

@@ -5,18 +5,18 @@
 \contentsline {subsection}{\numberline {1.2}Hilbert Space Operators}{3}
 \contentsline {subsection}{\numberline {1.3}Observables}{8}
 \contentsline {subsection}{\numberline {1.4}Dilation Theorems}{13}
-\contentsline {subsection}{\numberline {1.5}Measurement Models}{16}
-\contentsline {section}{\numberline {2}Formulation of Sequential Measurements}{19}
-\contentsline {subsection}{\numberline {2.1}Instruments}{19}
-\contentsline {subsection}{\numberline {2.2}Sequential Measurements}{22}
+\contentsline {subsection}{\numberline {1.5}Measurement Models}{15}
+\contentsline {section}{\numberline {2}Formulation of Sequential Measurements}{18}
+\contentsline {subsection}{\numberline {2.1}Instruments}{18}
+\contentsline {subsection}{\numberline {2.2}Sequential Measurements}{21}
 \contentsline {subsection}{\numberline {2.3}Repeatable Measurements}{23}
 \contentsline {section}{\numberline {3}Properties of Quantum Measurements}{24}
-\contentsline {subsection}{\numberline {3.1}Compatibility}{25}
-\contentsline {subsection}{\numberline {3.2}Non-Disturbance}{26}
+\contentsline {subsection}{\numberline {3.1}Compatibility}{24}
+\contentsline {subsection}{\numberline {3.2}Non-Disturbance}{25}
 \contentsline {subsection}{\numberline {3.3}Joint Measurability}{27}
 \contentsline {subsection}{\numberline {3.4}Universality}{29}
 \contentsline {subsection}{\numberline {3.5}Broadcasting}{33}
 \contentsline {section}{\numberline {4}Applications of Sequential Measurements}{36}
-\contentsline {subsection}{\numberline {4.1}Saturation of Repeated Measurements}{37}
-\contentsline {subsection}{\numberline {4.2}Approximate Repeatability}{44}
-\contentsline {section}{References}{48}
+\contentsline {subsection}{\numberline {4.1}Saturation of Repeated Measurements}{36}
+\contentsline {subsection}{\numberline {4.2}Approximate Repeatability}{43}
+\contentsline {section}{References}{47}

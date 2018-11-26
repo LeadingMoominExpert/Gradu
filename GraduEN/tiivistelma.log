@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.11.3)  4 NOV 2018 17:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6880 64-bit) (preloaded format=pdflatex 2018.11.26)  26 NOV 2018 11:56
 entering extended mode
 **./tiivistelma.tex
 (tiivistelma.tex
@@ -35,23 +35,23 @@ File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
 ("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
-Package: babel 2018/09/26 3.24 The Babel package
+Package: babel 2018/11/13 3.27 The Babel package
 
 ("C:\Program Files\MiKTeX 2.9\tex\generic\babel\switch.def"
-File: switch.def 2018/09/26 3.24 Babel switching mechanism
+File: switch.def 2018/11/13 3.27 Babel switching mechanism
 )
 *************************************
 * Local config file bblopts.cfg used
 *
-(C:\Users\tuoma_000\AppData\Roaming\MiKTeX\2.9\tex\latex\arabi\bblopts.cfg
+(C:\Users\ttammero\AppData\Roaming\MiKTeX\2.9\tex\latex\arabi\bblopts.cfg
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
  babel
 )
-(C:\Users\tuoma_000\AppData\Roaming\MiKTeX\2.9\tex\latex\babel-finnish\finnish.
-ldf
+(C:\Users\ttammero\AppData\Roaming\MiKTeX\2.9\tex\latex\babel-finnish\finnish.l
+df
 Language: finnish 2007/10/20 v1.3q Finnish support from the babel system
  ("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
-File: babel.def 2018/09/26 3.24 Babel common definitions
+File: babel.def 2018/11/13 3.27 Babel common definitions
 \babel@savecnt=\count89
 \U@D=\dimen103
 
@@ -178,13 +178,21 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@headsep=\skip48
 \dth@everypar=\toks29
 )
-(C:\Users\tuoma_000\AppData\Roaming\MiKTeX\2.9\tex\latex\bbold\bbold.sty
+(C:\Users\ttammero\AppData\Roaming\MiKTeX\2.9\tex\latex\bbold\bbold.sty
 Package: bbold 1994/04/06 Bbold symbol package
 LaTeX Font Info:    Redeclaring math alphabet \mathbb on input line 42.
 )
-(C:\Users\tuoma_000\AppData\Roaming\MiKTeX\2.9\tex\latex\lastpage\lastpage.sty
+(C:\Users\ttammero\AppData\Roaming\MiKTeX\2.9\tex\latex\lastpage\lastpage.sty
 Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
-) (tiivistelma.aux)
+)
+(tiivistelma.aux
+
+Package babel Warning: Unknown language `nil'. Very likely you
+(babel)                requested it in a previous run. Expect some
+(babel)                wrong results in this run, which should vanish
+(babel)                in the next one. Reported on input line 2.
+
+)
 \openout1 = `tiivistelma.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
@@ -199,8 +207,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
-
-(C:\Users\tuoma_000\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+ (C:\Users\ttammero\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count104
 \scratchdimen=\dimen115
@@ -240,12 +247,7 @@ Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
-)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
+))))
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
 Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -292,21 +294,28 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 24--34
 
 [1
 
-{C:/Users/tuoma_000/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{C:/Users/ttammero/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+
+Package lastpage Warning: Rerun to get the references right on input line 35.
+
 
 AED: lastpage setting LastPage
-(tiivistelma.aux) ) 
+(tiivistelma.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3273 strings out of 492970
- 42405 string characters out of 3135843
- 117450 words of memory out of 3000000
- 7095 multiletter control sequences out of 15000+200000
+ 3279 strings out of 492969
+ 42433 string characters out of 3135837
+ 117439 words of memory out of 3000000
+ 7102 multiletter control sequences out of 15000+200000
  5768 words of font info for 18 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,4n,25p,739b,227s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\tuoma_000\AppData\Local\MiKTeX\2.9\fonts\pk\ljfou
-r\jknappen\ec\dpi600\ecrm1200.pk>
-Output written on tiivistelma.pdf (1 page, 18459 bytes).
+ <C:\Users\ttammero\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi6
+00\ecrm1200.pk>
+Output written on tiivistelma.pdf (1 page, 18460 bytes).
 PDF statistics:
  57 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
