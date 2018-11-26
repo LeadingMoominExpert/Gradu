@@ -1,0 +1,92 @@
+\begin{thebibliography}{10}
+
+\bibitem{MQP}
+P.~Busch, P.~Lahti, J-P. Pellonpää, and K.~Ylinen.
+\newblock {\em Quantum Measurement}.
+\newblock Springer, 2016.
+
+\bibitem{luders}
+P.~Busch and J.~Singh.
+\newblock Lüders theorem for unsharp quantum measurements.
+\newblock {\em Phys. Lett. A}, 249:10--12, 11 1998.
+
+\bibitem{intristic_unsharpness}
+C.~Carmeli, T.~Heinonen, and A.~Toigo.
+\newblock Intrinsic unsharpness and approximate repeatability of quantum
+  measurements.
+\newblock {\em J. Phys. A}, 40(6), 2007.
+
+\bibitem{davies1970}
+E.~B. Davies and J.~T. Lewis.
+\newblock An operational approach to quantum probability.
+\newblock {\em Comm. Math. Phys.}, 17(3):239--260, 1970.
+
+\bibitem{saturation}
+E.~Haapasalo, T.~Heinosaari, and Y.~Kuramochi.
+\newblock Saturation of repeated quantum measurements.
+\newblock {\em J. Phys. A}, 49(33), 2016.
+
+\bibitem{heinosaari_simultaneous}
+T.~Heinosaari.
+\newblock Simultaneous measurement of two quantum observables: Compatibility,
+  broadcasting, and in-between.
+\newblock {\em Phys. Rev. A}, 93, Apr 2016.
+
+\bibitem{heinosaari_miyadera_universality}
+T.~Heinosaari and T.~Miyadera.
+\newblock {Universality of sequential quantum measurements}.
+\newblock {\em Phys. Rev. A.}, 91(2), 2015.
+
+\bibitem{heinosaari_notes_on_joint}
+T.~Heinosaari, D.~Reitzner, and P.~Stano.
+\newblock Notes on joint measurability of quantum observables.
+\newblock {\em Found, Phys.}, 38(12):1133--1147, Dec 2008.
+
+\bibitem{heinosaari_wolf_nondisturbance}
+T.~Heinosaari and M.~Wolf.
+\newblock {Non-disturbing quantum measurements}.
+\newblock {\em J. Math. Phys}, 51(9):1--20, 2010.
+
+\bibitem{heinosaari_ziman_2011_book}
+T.~Heinosaari and M.~Ziman.
+\newblock {\em The Mathematical Language of Quantum Theory: From Uncertainty to
+  Entanglement}.
+\newblock Cambridge University Press, 2011.
+
+\bibitem{kuramochi_constrution}
+Y.~Kuramochi.
+\newblock Construction of the least informative observable conserved by a given
+  quantum instrument.
+\newblock {\em J. Math. Phys.}, 56, 05 2015.
+
+\bibitem{Ozawa}
+M.~Ozawa.
+\newblock {Quantum measuring processes of continuous observables}.
+\newblock {\em J. Math. Phys}, 25(1):79--87, 1984.
+
+\bibitem{paulsen_vern}
+V.~Paulsen.
+\newblock {\em Completely Bounded Maps and Operator Algebras}.
+\newblock Cambridge University Press, 2003.
+
+\bibitem{reed_simon_math_physics}
+M.~Reed and B.~Simon.
+\newblock {\em Methods of modern mathematical physics. 1, Functional analysis}.
+\newblock New York, London: Academic Press, 1972.
+
+\bibitem{sic_povm}
+J.~Renes, R.~Blume-Kohout, A.~Scott, and C.~Caves.
+\newblock Symmetric informationally complete quantum measurements.
+\newblock {\em J. Math. Phys.}, 45, 2004.
+
+\bibitem{rudin}
+W.~Rudin.
+\newblock {\em Real and Complex Analysis, 3rd Ed.}
+\newblock McGraw-Hill, Inc., New York, NY, USA, 1987.
+
+\bibitem{Tumulka2008_kolmogorov}
+R.~Tumulka.
+\newblock A kolmogorov extension theorem for {POVM}s.
+\newblock {\em Lett. Math. Phys.}, 84(1):41--46, Apr 2008.
+
+\end{thebibliography}

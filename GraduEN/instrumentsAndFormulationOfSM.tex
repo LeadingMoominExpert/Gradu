@@ -1,0 +1,52 @@
+%TOOLS:
+%\theoremstyle{definition}
+%\newtheorem{definition}{Definition}
+%\newtheorem{example}{Example}
+%\newtheorem{theorem}{Theorem}
+%\numberwithin{definition}{section}
+%\numberwithin{example}{section}
+%\numberwithin{theorem}{section}
+
+%\DeclareMathOperator{\tr}{tr}
+%\newcommand{\I}{\mathcal{I}}%Instrumentti I
+%\newcommand{\ins}{\I_X^{\mm}}%I Schrödingerin kuvassa
+%\newcommand{\insd}{\I_X^{\mm *}}%I Heisenbergin kuvassa
+%\newcommand{\hi}{\mathcal{H}}%Hilbert
+%\newcommand{\ki}{\mathcal{K}}%2. Hilbert
+%\newcommand{\salg}{\mathcal{F}}%sigma-algebra
+%\newcommand{\tc}{\mathcal{T}}%Trace-class
+%\newcommand{\tila}{\mathcal{S}}%Tila
+%\newcommand{\mm}{\mathcal{M}}%Mittausmalli
+%\newcommand{\V}{\mathcal{V}}%Kanava V
+%\newcommand{\A}{\mathsf{A}}%Suure A
+%\newcommand{\B}{\mathsf{B}}%Suure B
+%\newcommand{\F}{\mathsf{F}}%Suure F
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%--------------------------------------------------------------
+%SECTION: INSTRUMENTS AND FORMULATION OF SEQUENTIAL MEASUREMENT
+%--------------------------------------------------------------
+
+
+\subsection{Instruments}
+Observables are identified with positive operator-valued measures (POVMs), which represent the outcome of a measurement, but they don't tell how a measurement alter the original quantum state. Measurement and state after measurement can be described using an instrument, which allows a measurement to the possibly changed quantum state.
+
+%---INSTRUMENTIN MÄÄRITELMÄ--------
+\begin{definition}
+An instrument describing a discrete observable $\A$ is a collection of completely positive linear transformations $\I_X$ to $\tc (\hi )$, for which $\I_x^* (\id ) = \A$ for all $x \in \salg$.
+\end{definition}
+%----------------------------------
+The dual of the instrument $\I$ in the previous definition is defined by the equation $\tr[L \I (T)] = \tr[\I_x^* (L)T]$, where $L \in \mathcal{L}(\hi)$ and $T \in \tc (\hi)$. $I_x^*$ is the instrument of the observable $\A_x$ in Heisenberg picture and $\I_x$ the instrument in the Schrödinger picture. The instrument $\I_x$ performs a measure of the observable $\A$ to a state $\rho$ giving result $x$ and what's left is the new state $\I_x(\rho)$. The probability for this is $\tr[\I_x(\rho)] = \tr[\rho \A_x]$.
+
+An example of an instrument for a discrete variable is the Lüders instrument, which is defined using the square root of the observable in the following way.
+
+%------LÜDERSIN INSTRUMENTTI-----
+\begin{definition}
+The Lüders instrument for a discrete variable is 
+\begin{equation}
+\I_x^L(\rho) = A_x^{1/2}\rho A_x^{1/2}
+\end{equation}
+\end{definition}
+%--------------------------------
+Clearly $\I^L$ is an instrument, since $\tr[\I_x^L(\rho)] = \tr[A_x^{1/2}\rho A_x^{1/2}] = \tr[\rho \A_x]$. Secondly, when summing over all the measurement results $x$ we get $\sum_x tr[\I_x^L(\rho)] = tr[\rho]$, so $\I_x^L$ is an instrument of the observable $\A$.
+
+

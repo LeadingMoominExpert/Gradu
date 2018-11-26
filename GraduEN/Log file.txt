@@ -1,0 +1,3 @@
+This file is meant to keep log of the updates in the files.
+
+16.9.2016	Turnitin page added to "Thesis.tex" - H. Lyyra

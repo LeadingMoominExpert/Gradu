@@ -1,0 +1,245 @@
+%\documentclass[draft,12pt]{wihuri} %Kätevä käyttää välillä kuvien tilalla tyjhiä raameja - auttaa debuggauksessa kun kuvat eivät tahdo asettua oikealle sivulle. Nopeuttaa kääntämistä ja auttaa hahmottamista
+\documentclass[a4paper]{wihuri}
+\usepackage{physics}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{lastpage}%periaatteessa turha
+%\usepackage{xtab} %turha ellei sulla ole ihan hiton pitkiä ja monisivuisia taulukoita.
+\usepackage{verbatim} %tämä tuo kätevät \begin{comment} \end{comment} käskyt pikaiseen k
+
+%\usepackage{appendix}
+%\usepackage[version=3]{mhchem} %jos on kemian kaavoja tms. niin tää on pirun kätevä - aina siisti lopputulos
+\usepackage[ansinew]{inputenc}
+\usepackage[finnish]{babel}
+\usepackage[sort&compress, comma, square, numbers]{natbib} % kirjallisuusluettelo ja viitteet oikein: [1], [1-5] jne. eli EHDOTON
+\usepackage{tytiivis} %Tiivistelmäsivun laatimiseksi
+
+%\providecommand{\molpic}[1]{\includegraphics[width=0.1\textwidth]{#1}}
+\providecommand{\cel}{\mbox{$\,^\circ$C} } %lämpötilaa varten - helpottaa kivasti
+\usepackage{amssymb, amsthm, amsmath}
+
+
+%\DeclareMathSymbol{,}{\mathpunct}{letters}{"3B} %näin matikkaympäristössä ($ $ ja esim.{align}) desimaalipiste pilkuksi
+\DeclareMathSymbol{.}{\mathord}{letters}{"3B}
+\DeclareMathSymbol{\decimal}{\mathord}{letters}{"3A}
+\renewcommand{\headrulewidth}{0pt}	%periaatteessa nämä ovat turhia, mutta jos tulee liitteitä, niin näiden sivunumerointia 
+\fancyfoot{}										 %varten ihan kätevä roikottaa mukana
+\fancyhead{} %
+\fancyhead[C]{\thepage} %
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{bbm}
+
+
+
+\theoremstyle{definition}
+\newtheorem{maar}{Määritelmä}
+\newtheorem{esim}{Esimerkki}
+\newtheorem{lause}{Lause}
+\numberwithin{maar}{section}
+\numberwithin{esim}{section}
+\numberwithin{lause}{section}
+
+\newcommand{\I}{\mathcal{I}}%Instrumentti I
+\newcommand{\ins}{\I_X^{\mm}}%I Schrödingerin kuvassa
+\newcommand{\insd}{\I_X^{\mm *}}%I Heisenbergin kuvassa
+\newcommand{\hi}{\mathcal{H}}%Hilbert
+\newcommand{\ki}{\mathcal{K}}%2. Hilbert
+\newcommand{\salg}{\mathcal{F}}%sigma-algebra
+\newcommand{\tc}{\mathcal{T}}%Trace-class
+\newcommand{\tila}{\mathcal{S}}%Tila
+\newcommand{\mm}{\mathcal{M}}%Mittausmalli
+\newcommand{\V}{\mathcal{V}}%Kanava V
+\newcommand{\A}{\mathsf{A}}%Suure A
+\newcommand{\B}{\mathsf{B}}%Suure B
+\newcommand{\F}{\mathsf{F}}%Suure F
+
+
+\newcommand{\id}{\mathbb{1}}
+\begin{document}
+
+
+\title{Superjonomittaukset}
+\opinnayte{Pro Gradu -tutkielma}
+\author{LuK Tuomas Tammero}
+\vuosi{2016}
+\oppiaine{Teoreettinen fysiikka}
+\laitos{Fysiikan ja tähtitieteen laitos}
+\tarkastaja{Dos Teiko Heinosaari}
+
+\maketitle
+
+\begin{tiivistelma}
+        {Fysiikan ja tähtitieteen laitos}%
+		{Tammero, Tuomas:}%        
+        {Superjonomittaukset}%
+        {Pro Gradu -tutkielma, ?s.}%
+        {Teoreettinen fysiikka}% Oppiaine
+        {Kukkuu 2016}%
+
+
+
+Asiasanat:
+\end{tiivistelma}
+
+
+\renewcommand{\baselinestretch}{1.66}\large\normalsize %Jos haluat pelata sisällysluettelon pituudella 
+\tableofcontents
+
+\renewcommand{\baselinestretch}{1.66}\large\normalsize % nämä ovat sitä varten (huom. 1.66 vastaa riviväliä 1.5, mikä on kautta gradun käytössä
+
+\newpage
+\section*{Johdanto}
+\thispagestyle{empty}
+\addcontentsline{toc}{section}{Johdanto}
+
+Johdanto tähän
+
+\newpage
+\section{Taustaa}
+Tähän taustatiedot, joita tarvitaan jatkon ymmärtämiseen.\\
+-$\sigma$-algebra $\salg$\\
+-POVM\\
+-mittausmalli $\mm = \langle\ki , \xi , \V  , \F \rangle$\\
+viiteluettelo näkyviin:\citep{Busch1990}\citep{Heinosaari2010}\cite{Heinosaari2015}\citep{HeinosaariTeiko;Ziman2011}\cite{Ozawa}
+
+\section{Instrumentit ja jonomittauksen formulointi}
+\subsection{Instrumentit}
+%----------------------------------------------------------------------
+%-Lähdetään liikkeelle instrumentin määritelmästä
+%----------------------------------------------------------------------
+Positiivioperaattorimitta eli suure kuvaa mittaustulosta, mutta ei kerro kuinka mittaus muuttaa alkuperäistä kvanttitilaa. Mittausta ja mittauksen jälkeistä tilaa voidaan kuvata instrumentillä, jolloin on mahdollista tehdä jo kertaalleen mittauksen kohteena olleeseen ja mahdollisesti muuttuneeseen tilaan uusi mittaus. 
+\begin{maar}
+Diskreettiä suuretta $\A$ kuvaava instrumentti on kokoelma täyspositiivisia lineaarikuvauksia $\I_X$ joukolle $\tc (\hi )$, joille $\I_{x}^{*}(\id) = \A$ kaikille $x \in \salg$. %Merkitään $\I_x \equiv \I$.
+\end{maar}
+\noindent Määritelmässä esiintynyt instrumentin $\I$ duaali määritellään kaavalla $\tr[L\,\I_x (T)] = \tr[\I_x^* (L)T]$, missä $L \in \mathcal{L}(\hi)$ ja $T \in \tc (\hi)$. $\I_x^*$ on siis suureen $\A_x$ instrumentti Heisenbergin kuvassa ja $\I_x$ on instrumentti Schrödingerin kuvassa. Instrumentti suorittaa suureen $\A$ mittauksen tilaan $\rho$ tuottaen tuloksen $x$, jolloin jäljelle jää tila $\I_x (\rho)$. Todennäköisyys tälle tapahtumalle on $\tr[\I_x (\rho)] = \tr[\rho \A_x]$.%Viite Non-Disturbing Quantum Measurements -artikeliin
+
+Eräs esimerkki instrumentista disktreetille suureelle on kyseisen suureen Lüdersin instrumentti, joka määritellään suureoperaattorin neliöjuuren avulla seuraavasti.
+\begin{maar}
+Diskreetin suureen $\A$ Lüdersin instrumentti $\I^L$ on
+\begin{equation}
+\I_{x}^L (\rho) = \A_x^{1/2} \rho \A_x^{1/2}
+\end{equation}
+$\I^L$ on selvästi instrumentti, sillä $\tr[\I_x^L(\rho)] = \text{tr}[\A_x^{1/2} \rho \A_x^{1/2}] = \tr[\rho \A_x]$. Lisäksi kaikkien mittausarvojen $x$ yli summatessa saamme $\sum_x \tr[\I_x^L(\rho )] = \tr[\rho]$, joten $\I_x^L$ on suureen $\A$ instrumentti.
+\end{maar}
+
+Yleisempi määritelmä instrumentille voidaan antaa mittausmallin määritelmää hyödyksi käyttäen. Suoritettuamme suureen $\A$ mittauksen mittausmallia $\mm = \langle \ki , \xi , \mathcal{V}  , \F \rangle$ käyttäen voidaan systeemille suorittaa jonkin toiseen suureen $\B$ mittaus. Tällöin saadaan selville suureiden $\A$ ja $\B$ mittaustulosten todennäköisyyksien yhteisjakauma. Kun suureen $\A$ mittaus antaa tuloksen $X$ ja suureen $\B$ mittaus antaa tuloksen $Y$, saadaa mittausten yhteistodennäköisyys mitattavalle tilalle $\rho$ ja apusysteemin tilalle $\xi$ kaavasta 
+\begin{align*}
+\tr[\V(\rho \otimes \xi)(\B(Y	) \otimes \F(X))] \text{.}
+\end{align*}
+Suureelle $\B$ ei tässä tarvitse määritellä mittausmallia kuten suureelle $\A$, vaan $\B$:n mittausta pidetään suorana mittauksena tilaan. Edelleen mittaustodennäköisyys voidaan kirjoittaa muodossa 
+\begin{align*}
+\tr[\V(\rho \otimes \xi)(\B(Y	) \otimes \F(X))] = \tr[\B(Y) \tr_{\ki}[\V(\rho \otimes \xi)(\id \otimes \F(X)]],
+\end{align*}
+jossa jäljen alaindeksi tarkoittaa osittaista jälkeä yli kyseisen Hilbertin avaruuden. Edelleen osittainen jälki voidaan erikseen merkitä seuraavasti
+\begin{equation}
+\I_{X}^{\mm}(\rho) := \tr_{\ki}[\V(\rho \otimes \xi)(\id \otimes \F(X)]\text{.}
+\end{equation}
+\begin{maar}
+Kuvaus $\I_X^{\mm}$ tulosavaruudelta ($\salg$, $\Omega$) jälkiluokkaoperaattoreiden joukkoon on mittausmallin $\mm$ instrumentti, mikäli se täyttää seuraavat kolme ehtoa
+\begin{enumerate}[1)]
+\item $\I_X^{\mm}$ on lineaarinen, täyspositiivinen ja jäljen säilyttävä
+\item $\tr[\I_{\Omega}^{\mm}(\rho)] = 1$ ja $tr[\I_{\emptyset}^{\mm}(\rho)=0]$
+\item Tilalle $\rho$ ja joukolle keskenään erillisiä joukkoja $\lbrace X_i \rbrace$ pätee $\tr[\I_{\cup_i X_i}^{\mm}(\rho)] = \sum_i tr[\I_{X_i}^{\mm}(\rho)]$.
+\end{enumerate}
+\end{maar}
+Instrumentti $\ins$ määrittelee yksikäsitteisesti mitatun suureen todennäköisyyksien avulla
+\begin{align*}
+p_{\rho}(\A \in X) =\tr[\ins(\rho)],
+\end{align*}
+jossa $p_{\rho}(\A \in X)$ tarkoittaa todennäköisyyttä, jolla suureen $\A$ mittaus tilalle $\rho$ antaa tuloksen joukosta $X$. Lisäksi jokainen mittausmalli määrittelee yksikäsitteisen instrumentin. Tällöin voidaan sanoa, että $\ins$ on mittausmallin $\mm$ indusoima. Seuraava lause määrittelee tämän tarkemmin.
+\begin{lause}
+\textit{(Ozawan lause)} Jokaista instrumenttia $\I$ vastaa mittausmalli $\mm$ siten, että $\I$ = $\I^{\mm}$. Lisäksi $\mm$ on mahdollista valita siten, että $\xi$ on puhdas tila, $\V$ on unitaarikanava ja $\F$ on tarkka suure.
+\end{lause}%Nimetäänkö lauseeksi vai teoreemaksi?
+\noindent \textit{Todistus}\cite{Ozawa}
+
+Edellä on määritelty suureelle $\A (X)$ instrumentti Schrödingerin kuvassa. Instrumentin $\ins$ Duaali $\insd$, eli instrumentti Heisenbergin kuvassa määrittelee suureen $\A$ seuraavasti
+\begin{align*}
+\A (X) = \insd (\id) \quad \forall X \in \salg\text{.}
+\end{align*}
+Tämä voidaan ilmoittaa toisella tapaa todennäköisyyksien avulla muodossa
+\begin{align*}
+\tr[\rho \A (X)] = \tr[\ins (\rho)] \quad \forall X \in \salg , \rho \in \mathcal{S}(\hi)\text{.}
+\end{align*}
+Jokainen mittausmalli määrittelee yksikäsitteisen instrumentin ja jokainen instrumentti määrittelee yksikäsitteisen suureen. Jokainen suure puolestaan määrittelee instrumenttien ekvivalenssiluokan, kuten jokainen instrumentti määrittelee mittausmallien ekvivalenssiluokan. Jokaisen instrumentin duaali kuitenkin määrittelee suureen yksikäsitteisesti, kuten edellä nähtiin.
+\subsection{Jonomittaukset}
+Jonomittauksella tarkoitetaan tilannetta, jossa tilalle suoritetaan jonkin suureen mittaus, jonka jälkeen uudelle, instrumentin muokkaamalle tilalle suoritetaan jonkin toisen suureen mittaus. Olkoon kyseiset suureet $\A(X)$ ja $\B(Y)$. Tällöin on hyödyllistä määritellä molemmille mittausmalli. Suureen $\A(X)$ mittausmalli on $\mm_a = \langle \ki_a , \xi_a , \V_a  , \F_a \rangle$ ja vastaavasti suureen $\B(Y)$ mittausmalli on  $\mm_b = \langle \ki_b , \xi_b , \V_b  , \F_b \rangle$. Jonomittauksella tarkoitetaan siis tilannetta, jossa ensin mitataan $\A(X)$ ja sitten $\B(Y)$. Muotoillaan seuraavaksi kyseinen jonomittaus täsmällisemmin.
+
+Olkoon $I_{ab}$ kuvaus $\tc(\hi \otimes \ki_a \otimes \ki_b) \rightarrow \tc(\hi \otimes \ki_b \otimes \ki_a)$, joka vaihtaa Hilbertin avaruuksien $\ki_a$ ja $\ki_b$ paikkaa tensoritulossa. Lisäksi merkitään $\widetilde{\V}_a = \V_a \otimes \id_a$ ja $\widetilde{\V}_b = I_{ab}^{-1} \circ \V_b \otimes \id_a \circ I_{ab}$. Lisäksi osittaisen jäljen yläindeksi * tarkoittaa kuvausta yhdistetyltä Hilbertin avaruudelta $\hi \otimes \ki_a \otimes \ki_b$ ja osittainen jälki ilman yläindeksiä kuvausta kahden Hilbertin avaruuden tensoritulosta. Esimerkiksi $\tr_{ab}^* :\tc(\hi \otimes \ki_a \otimes \ki_b) \rightarrow \tc(\hi)$ ja $\tr_a :\tc(\hi \otimes \ki_a) \rightarrow \tc(\hi)$. Näitä merkintöjä käyttäen saadaan suoralla laskulla
+\begin{align*}
+\I_{X\times Y}^{\mm_{ab}}(\rho) &= \tr_{ab}^*[\widetilde{\V}_b \circ \widetilde{\V}_a(\rho \otimes \xi_a \otimes \xi_b)\id \otimes \F_a(X) \otimes \F_b(Y)] \\
+&= \tr_b[\tr_a^*[\widetilde{\V}_b(\V_a(\rho \otimes \xi_a)\otimes \xi_b)\id \otimes \F_a(X) \otimes \F_b(Y)]] \\
+&= \tr_b[\V_b(\tr_a[\V_a(\rho \otimes \xi_a)\id \otimes \F_a(X)]\otimes \xi_b)\id \otimes \F_b(Y)] \\
+&= \tr_b[\V_b(\I_X^{\mm_a}(\rho)\otimes \xi_b)\id \otimes \F_b(Y)] \\
+&= \I_Y^{\mm_b}(\I_X^{\mm_a}(\rho)) \\
+&= \I_Y^{\mm_b} \circ \I_X^{\mm_a}(\rho)\text{.}
+\end{align*}
+Yhdistetyn mittauksen $\mm_{ab} = \langle\ki_a \otimes \ki_b , \xi_a \otimes \xi_b , \widetilde{\V}_b \circ \widetilde{\V}_a  , \F_a \otimes \F_b \rangle$ instrumentti  $\I_{X\times Y}^{\mm_{ab}}(\rho)$ on siis mittausmallien $\mm_a$ ja $\mm_b$ indusoimien instrumenttien yhdistetty kuvaus. Yleisesti $\I_{X\times Y}^{\mm_{ab}}(\rho) \neq \I_{X\times Y}^{\mm_{ba}}(\rho)$, joten saadut mittaustulokset riippuvat järjestyksestä, jossa suureiden $\A$ ja $\B$ mittaukset suoritetaan. Mikäli kuitenkin yhdistetyn mittauksen instrumentit ovat samat mittausjärjestyksestä riippumatta on kyseessä yhteensopivat suureet.
+
+Tarkastellaan seuraavaksi jonomittausten todennäköisyyksiä. Kaikille tiloille $\rho \in \tila (\hi)$ kuvaus
+\begin{align*}
+X \times Y \mapsto [0,1], \quad Z \mapsto \tr[\I_{Z}^{\mm_{ab}}(\rho)]
+\end{align*}
+on todennäköisyysmitta suureiden $\A$ ja $\B$ yhteistodennäköisyydelle. Todennäköisyys tilalle $\rho$ suoritetun jonomittauksen mittaustulokselle $X \times Y$ on 
+\begin{align*}
+\tr[\I_{X\times Y}^{\mm_{ab}}(\rho)] &= \tr[\I_Y^{\mm_b} \circ \I_X^{\mm_a}(\rho)] \\
+&= \tr[\I_X^{\mm_a}(\rho)\B(Y)]\text{.}
+\end{align*}
+Tämä todennäköisyys voidaan myös tulkita siten, että se kuvaa suureen $\B$ mittausta normalisoimattomaan tilaan $\I_X^{\mm_a}(\rho)$ tuottaen tuloksen $Y$. Tämä normalisoimaton tila kuitenkin on riippuu siitä, että suureen $\A$ mittaus on tuottanut tuloksen $X$. Tällöin on luonnollista kuvata tilannetta ehdollisten todennäköisyyksien avulla. Tällöin suureen $\B$ mittaus antaa tuloksen $Y$ sillä ehdolla, että suureen $\A$ mittaus tilaan $\rho$ on tuottanut mittaustuloksen $X$. 
+
+\subsection{Toistettavat mittaukset}
+Luonnollinen jatkumo jonomittauksista saadaan siirryttäessä toistettaviin mittauksiin. Olkoon nyt suureen $\A$ mittausmalli $\mm_a = \mm$ kuten jonomittausten tapauksessa. Toistettavassa mittauksessa suoritetaan siis saman mittausmallin mukainen mittaus tilaan useita kertoja. Jos systeemille suoritetaan suureen $\A$ mittaus kahdesti, niin mittauksessa joko saadaan tai ei saada lisää informaatiota. Mittaus $\mm$ on toistettava mikäli mittauksen toistaminen ei johda uuteen todennäköisyyksien näkökulmasta uuteen tulokseen, eli
+\begin{align*}
+\tr[\I_{X \times Y}^{\mm_{aa}}(\rho)] &= \tr[\I_Y^{\mm_a} \circ \I_X^{\mm_a}(\rho)] \\ 
+&= \tr[\I_{X \cap Y}^{\mm_a}(\rho)] \quad \forall X,Y \in \salg, \rho \in \tila(\hi)\text{.}
+\end{align*}
+Ylläolevan ehdon voidaan sanoa kuvaavan mittauksen heikkoa toistettavuutta, jolloin se voidaan erottaa mittauksen vahvasta toistettavuudesta
+\begin{align*}
+\I_{X \times Y}^{\mm_{aa}}(\rho) = \I_{X \cap Y}^{\mm_a}(\rho) \quad \forall X,Y \in \salg, \rho \in \tila(\hi)\text{.}
+\end{align*}
+Heikko toistettavuus voidaan myös ilmaista ekvivalentissa muodossa 
+\begin{equation}
+\tr[\I_X^{\mm_a} \circ \I_X^{\mm_a}(\rho)]  = \tr[\I_X^{\mm_a}(\rho)]\text{.}
+\end{equation}
+Suureelle $\A$ voidaan suorittaa toistettavia mittauksia, mikäli sen mittausmalli $\mm$ on toistettava.
+
+
+
+\section{Jonomittauksen aiheuttama häiriö}
+
+
+
+\section{Jonomittausten universaalisuus}
+
+
+\section{Jonomittausten rajoitukset}
+
+\newpage
+%kirjallisuusluettelo
+\addcontentsline{toc}{section}{\refname} %Sisällysluetteloon näkymään "Viitteet" sivunumerolla kuten kaikki muukin
+%\renewcommand{\baselinestretch}{1.2}\large\normalsize % jos on paljon viitteitä, tällä saa hieman sivuja karsittua
+ %Bibtex-tiedoston nimi, joka sijaitsee samassa hakemistossa muiden kanssa. Näitä voi olla useita.
+\bibliographystyle{wihuri}
+\bibliography{Gradu}
+
+
+
+
+
+%------------------------
+%Jos sulle tulee liitteitä, niin tässä yksi tapa
+
+%\newpage
+%\setcounter{page}{1} %nollataan sivulaskurit tai ykköstetään ;)
+%\setcounter{section}{0} % sama temppu kappalenumeroille
+
+%\renewcommand\thesection{\Alph{section}} %Kappalenumerointi tyyliin A,B,C...
+%\renewcommand\thepage{\Alph{section}-\arabic{page}} % ja sivunumerot vastaavasti A-1, A-2, B-1...
+
+
+%\section{Liitekappale}
+
+%Tyhjää.
+
+
+\end{document} %Ja eiku tulostelemaan

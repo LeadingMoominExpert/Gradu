@@ -1,0 +1,35 @@
+\documentclass[a4paper,12pt]{wihuri}
+%\usepackage{isolatin1} % Saadaan ��kk�set toimimaan !
+%\usepackage[latin1]{inputenc} % Saadaan oikeat merkit
+\usepackage[utf8]{inputenc} % T�ll� toimii utf-8
+\usepackage[T1]{fontenc}      % Ja t�m� liittyy edelliseen
+\usepackage[finnish]{babel} %Suomenkielinen tavutus
+\usepackage{tytiivis2} %Tiivistelm�sivun laatimiseksi
+\usepackage[pdftex]{graphicx}%Saadaan kuvat toimimaan
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{bbold}								%identity operator \mathbb{1}
+\usepackage{lastpage}
+
+\begin{document}
+\begin{tiivistelma2}
+        {Fysiikan ja tähtitieteen laitos}%
+        {TAMMERO, TUOMAS:}%Tekijän suku- ja etunimi
+        {Kvanttijonomittaukset}%Tutkielman otsikko
+        {Pro gradu -tutkielma, XX sivua}%
+        {Teoreettinen fysiikka}% Oppiaine
+        {Marraskuu 2018}%tutkielman valmistumisvuosi ja -kuukausi
+
+Tämän tutkielman tarkoituksena on tutkia kvanttimittauksia ja vielä tarkemmin sanottuna kvanttijonomittauksia. Tavoitteena on vastata muutamiin kysymyksiin, esimerkiksi milloin jonomittauksen tai toistetun mittauksen suorittaminen on mielekästä tai ylipäätään mahdollista. Mittausten mielekkyyden ja mahdollisuuden tärkeys nousee esille, kun halutaan tietää minkälaista informaatiota on mahdollista saada suorittamalla mittauksia kvanttitiloille.
+
+Kvanttiteorian alkeissa suureet yhdistetään itseadjungoituviin operaattoreihin. Tässä tutkielmassa esitellään positiivioperaattorimitan käsite, jotta suureita voisi ymmärtää syvällisemmin. Tosin mittauksen suorittaminen positiivioperaattorimittaa käyttäen ei riitä silloin kun halutaan mallintaa kvanttitilaa mittauksen jälkeen, vaan jäljelle jää ainoastaan statistiikkaa itse mittauksesta. Jotta kvanttitilaan voisi suorittaa useita mittauksia, tarvitaan mittausmallin ja instrumentin käsitteitä. Instrumenttien käyttäminen on ensisijaisen tärkeää, kun tilaan halutaan suorittaa uusia mittauksia ensimmäisen mittauksen jälkeen. Tällä tavoin on mahdollista suorittaa jonomittauksia.
+
+Sen jälkeen kun tarvittavat työkalut jonomittausten suorittamiseen on määritelty, esitellään muutamia näihin liittyviä ominaisuuksia. Käyttämällä määriteltyjä työkaluja ja ominaisuuksia on mahdollista esitellä sovellutuksia jonomittauksille. Tällä tavoin jonomittaukset osoittautuvat hyödyllisiksi, kun kvanttitilasta pyritään saamaan mahdollisimman paljon informaatiota.
+
+
+\noindent Avainsanat: Mittaus, Jonomittaus, Suure, Mittausmalli, Instrumentti
+\end{tiivistelma2}
+\end{document}
