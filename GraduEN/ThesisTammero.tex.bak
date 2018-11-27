@@ -120,9 +120,9 @@
         {Department of Physics and Astronomy}%
         {TAMMERO, TUOMAS:}%Tekijän suku- ja etunimi
         {Sequential Quantum Measurements}%Tutkielman otsikko
-        {Master's thesis, XX pages}% , YY appendix pages
+        {Master's thesis, 48 pages}% , YY appendix pages
         {Theoretical physics}% Oppiaine
-        {November 2018}%tutkielman valmistumisvuosi ja -kuukausi
+        {December 2018}%tutkielman valmistumisvuosi ja -kuukausi
 
 This thesis studies the field of quantum measurements and more precisely sequential measurements. The aim is to provide answers to questions like when is performing a sequential or a repeated measurement meaningful, or even possible. This is important in order to understand what type of information can be acquired when performing measurements on quantum states. 
 
@@ -148,7 +148,7 @@ After defining the necessary tools for sequential measurements and a few differe
 \addcontentsline{toc}{section}{Introduction}
 Measurements in the quantum world are extremely different from what they are in the classical sense. Classically, it's possible to measure almost anything with precision, given the limitations of our measurement devices. As an example a classical system containing only a single particle is fully described by it's location and momentum, both of which can be measured. In quantum theory, states are used to describe the system and a measurement is performed directly on the state. These measurements performed on states often disrupt the state in one way or another. We might not be able to perform another measurement to a state after an initial measurement is made or the measurement itself could alter the state somehow. 
 
-The objective of this thesis is to showcase and study a variety of measurement setups, which affect the measured state in different ways. Starting from the rudiments of quantum mechanical framework and the most basic notion of an observable, a positive operator valued measure, we work our way to measurement models and instruments. The aim is to introduce the necessary tools needed to perform multiple measurements in the initial state, which is essentially what sequential measurements mean. A special case of sequential measurement is repeatable measurements, where a measurement of a single observable is performed multiple times. We study how measuring observables sequentially alter the quantum state in each step and when performing these types of measurements is meaningful.
+The objective of this thesis is to showcase and study a variety of measurement setups, which affect the measured state in different ways. Starting from the rudiments of quantum mechanical framework and the most basic notion of an observable, a positive operator valued measure, we work our way to measurement models and instruments. The aim is to introduce the tools needed to perform multiple measurements in the initial state, which is essentially what sequential measurements mean. A special case of sequential measurement is repeatable measurements, where a measurement of a single observable is performed multiple times. We study how measuring observables sequentially alter the quantum state in each step and when performing these types of measurements is meaningful.
 
 Quantum measurements have a variety of features which are introduced in this thesis. For example the notion of non-disturbance, which shows what kind of measurements can be performed without disturbing the initial state. Another feature closely related to non-disturbance worth mentioning is joint measurability, where we'll study what kind of observables can be measured jointly on the quantum state. 
 
@@ -407,7 +407,7 @@ For operators not in the trace class, a spectral decomposition exists, but the d
 \end{theorem}
 
 \subsection{Observables}
-Before any measurements can be performed, observables need to be defined. In introduction level quantum physics, observables are often presented as selfadjoint operators. For the purposes of this thesis, this representation of observables is not sufficient. Here observables are identified as positive operator valued measures (POVM's), which are mappings from a chosen $\sigma$-algebra $\salg$, to the set of effects in the Hilbert space, $\effect(\hi)$. 
+Before any measurements can be performed, observables need to be defined. In introduction level quantum physics, observables are often presented as selfadjoint operators. For the purposes of this thesis, this representation of observables is not sufficient. Here observables are identified as positive operator valued measures (POVMs), which are mappings from a chosen $\sigma$-algebra $\salg$, to the set of effects in the Hilbert space, $\effect(\hi)$. 
 %------------------------------------------------------------------------------------
 %---------------- SIGMA ALGBRA ------------------------------------------------------
 %-----------------------------------------------------------------------------------
@@ -440,15 +440,15 @@ A POVM is a mapping $\A : \salg \rightarrow \effect(\hi)$, for which
 \item $\A(\cup_i X_i) = \sum_i \A(X_i)$, \quad with respect to the weak operator topology, for any sequence of disjoint sets $\lbrace X_i \rbrace \in \salg$
 \end{enumerate}
 \end{definition} 
-\noindent Moreover, the mapping $\A$ is a POVM if and only if $X \mapsto \tr[\rho A(X)]$ represents a probability measure for all states $\rho \in \tila(\hi)$.
+\noindent Moreover, the mapping $\A$ is a POVM if and only if $X \mapsto \tr[\rho \A(X)]$ represents a probability measure for all states $\rho \in \tila(\hi)$.
 
 
 \begin{example}\label{qubitobs}
-Let's consider the Hilbert space $\hi = \cc$. Now, any selfadjoint operator $A$ can be written using the operators $\id, \sigma_x, \sigma_y$ and $\sigma_z$ by composing a linear combination. This is a way to obtain a general effect on $\hi$,
+Let's consider the Hilbert space $\hi = \cc$. Now, any selfadjoint operator can be written using the operators $\id, \sigma_x, \sigma_y$ and $\sigma_z$ by composing a linear combination. This is a way to obtain a general effect on $\hi$,
 \begin{align*}
-A = \frac{1}{2}(\alpha \id + \vec{r}\cdot\vec{\sigma}), \quad \alpha \in \real, \vec{r} \in \real^3\text{.}
+\A(\alpha, \vec{r}) = \frac{1}{2}(\alpha \id + \vec{r}\cdot\vec{\sigma}), \quad \alpha \in \real, \vec{r} \in \real^3\text{.}
 \end{align*}
-The eigenvalues of $A$ are $\lambda_{\pm} = \frac{1}{2}(\alpha \pm \norm{\vec{r}})$. $A$ is in fact an effect if the following requirements are held
+The eigenvalues of $\A(\alpha, \vec{r})$ are $\lambda_{\pm} = \frac{1}{2}(\alpha \pm \norm{\vec{r}})$. $\A(\alpha, \vec{r})$ is in fact an effect if the following requirements are held
 \begin{align*}
 0 \leq \lambda_{-}, \quad \lambda_{+} \leq 1 \Rightarrow \norm{\vec{r}} \leq \alpha \leq 2 - \norm{\vec{r}}\text{.}
 \end{align*}
@@ -465,9 +465,9 @@ An observable $\A$ is sharp, if $\A(X)$ is a projection for every $X \in \salg$.
 
 \begin{example}
 Let $\hi = \cc$. In $\hi$ sharp observables have only two possible outcomes, labelled here as $\pm 1$. Respectively, the corresponding operators $\A(-1)$ and $\A(1)$ are either $O$, $\id$ or some other one dimensional projection. If we exclude $O$ and $\id$, choose a vector $\vec{r} \in \mathbb{R}^3$, we can define
-\begin{align*}
+\begin{equation}\label{sharp_qubit}
 \A(-1) = \frac{1}{2}(\id - \vec{r}\cdot\vec{\sigma}), \quad \A(1) = \frac{1}{2}(\id + \vec{r}\cdot\vec{\sigma}),
-\end{align*}
+\end{equation}
 where $\vec{\sigma}$ denotes a vector with the Pauli matrices as elements. The corresponding selfadjoint operator for the observable $\A$ is 
 \begin{align*}
 A = \sum_i i\A(i) = \vec{r}\cdot \vec{\sigma}\text{.}
@@ -488,23 +488,36 @@ Often in literature a single observable $\A$ is said to be informationally compl
 %---------------- EXAMPLE: SIC POVM -------------------
 \begin{example}
 %As an example of a informationally complete observable, we'll use the simplest symmetric informationally complete observable or SIC-POVM for short\cite{sic_povm}. aaa
-Let $\hi = \mathbb{C}^d$, of $\hi$ and let $P$ be a set of $d^2$ normalized vectors $\ket{\psi_k}$, for which
+Let $\hi = \mathbb{C}^2$ and let $P$ be a set of $\dim (\hi)^2 = 4$ normalized vectors $\lbrace \ket{\psi_1}, \ket{\psi_2}, \ket{\psi_3}, \ket{\psi_4} \rbrace$, for which
 \begin{align*}
-|\braket{\psi_k|\psi_j}|^2 = \dfrac{1}{d+1}, \quad k \neq j \text.
+|\braket{\psi_k | \psi_j }| = \dfrac{1}{3},\quad k \neq j\text.
 \end{align*}
-The POVM elements corresponding to $P$ are the projections $\ket{\psi_k}\bra{\psi_k}/d = \Pi_k/d$. In order to have an informationally complete $P$, the operators $\Pi_k$ must be linearly independent, since they need to span the entire space of operators. To show linear independence we need to consider the rank of the Gram matrix of the operators. Using the previous equation we get
+The POVM elements corresponding to $P$ are the scaled operators $\ket{\psi_k}\bra{\psi_k}/3 = \Pi_k/3$. In order to have an informationally complete $P$, the operators $\Pi_k$ must be linearly independent, since they need to span the entire space of operators.\cite{sic_povm}  
+
+In the qubit case, the four vectors needed to construct these operators are easy find. Let the first of the four vectors be 
 \begin{align*}
-\tr[\Pi_j^*\Pi_k]  = \dfrac{d\delta_{jk} + 1}{d + 1}\text.
-\end{align*} 
-
-
-
-Due to the Kronecker delta and the constant value $d$, the Gram matrix here is circulant, meaning that each row is a cyclic shift of the previous. By definition the eigenvalue of each row is found using a Fourier transform to one of the rows and no eigenvalues are zero. This can be seen by choosing a complex number $\zeta\neq 1$ for which $\zeta^d = 1$, i.e. the $d$th root of unity defined by $\zeta=e^{2\pi i k/d}$ where $k = 1,\,\dots,d-1$, we can define a new orthonormal basis $\lbrace \varphi_i \rbrace$ using the set of vectors $\lbrace \psi_j \rbrace$ by
-\begin{align*}
-\varphi_i = \dfrac{1}{\sqrt{d+1}}\sum_{j=0}^d \zeta^{ij}\psi_j\text.
+\ket{\psi_1} = \begin{pmatrix}
+1\\
+0
+\end{pmatrix}\text.
 \end{align*}
+Then we can assume that the first component of each of the other three vectors is $1/\sqrt{3}$ to meet the necessary requirement. The other component needs to be rotated accordingly, so to say, since the first component of the three vectors is same. In fact, the following three vectors can be used to construct the wanted POVM
+\begin{align*}
+\ket{\psi_2} = \begin{pmatrix}
+\dfrac{1}{\sqrt{3}}\\
+\sqrt{\dfrac{2}{3}}
+\end{pmatrix},\quad \ket{\psi_2} = \begin{pmatrix}
+\dfrac{1}{\sqrt{3}}\\
+\sqrt{\dfrac{2}{3}}e^{2i\pi/3}
+\end{pmatrix},\quad \ket{\psi_3} = \begin{pmatrix}
+\dfrac{1}{\sqrt{3}}\\
+\sqrt{\dfrac{2}{3}}e^{-2i\pi/3}
+\end{pmatrix},
+\end{align*}
+and the elements of $P$ are $\ket{\psi_1}\bra{\psi_1}, \ket{\psi_2}\bra{\psi_2}, \ket{\psi_3}\bra{\psi_3}$ and $\ket{\psi_4}\bra{\psi_4}$.
 
-Hence, the Gram matrix has a full rank, the projections $\Pi_k$ are linearly independent and $P$ is informationally complete\cite{sic_povm}.
+
+
 
 \end{example}
 
@@ -523,7 +536,7 @@ A mapping $\kappa$ satisfying these conditions is called a Markov kernel, which 
 
 To show that post-processing really is a pre-order, we need to prove it's reflexivity and transitivity. Reflexivity follows straight from the definition of the mapping $\kappa$. For three observables $\A, \B, \C$, let $\A \pp \B$ and $\B \pp \C$, then
 \begin{align*}
-&\A(x) = \sum_y \kappa_1(x,y) \B(y), \quad \B(y) = \sum_Z \kappa_2(y,x) \C(z) \\
+&\A(x) = \sum_y \kappa_1(x,y) \B(y), \quad \B(y) = \sum_z \kappa_2(y,x) \C(z) \\
 \Rightarrow & \A(x) = \sum_{y,z} \kappa_1(x,y)\kappa_2(y,z)\C(z)
 \end{align*}
 Since both $\sum_y \kappa_1(x,y) = 1$ and $\sum_Z \kappa_2(y,z) = 1$ and both $\kappa_1$ and $\kappa_2$ are mappings to the set $[0,1]$, post-processing is transitive and hence, a pre-order.
@@ -531,44 +544,29 @@ Since both $\sum_y \kappa_1(x,y) = 1$ and $\sum_Z \kappa_2(y,z) = 1$ and both $\
 
 %----------- EXAMPLE OF POST-PROCESSING ----------------
 \begin{example}
-Let $\A$ and $\B$ be non-sharp qubit observables of the form
+Let $\A$ be a qubit observable of the form
 \begin{align*}
-\A = \dfrac{1}{2}(\id + \vec{a}\cdot\sigma),\quad \norm{\vec{a}} \neq 1, \quad \B = \dfrac{1}{2}(\id + \vec{b}\cdot\sigma),\quad \norm{\vec{b}} \neq 1 \text.
+\A(\pm 1) = \dfrac{1}{2}(\id \pm \vec{a}\cdot\vec{\sigma})\text. 
 \end{align*}
-For post-processing we'll use the matrix 
+To obtain another qubit observable $\B$, we need the to define the applied post-processing $\kappa$ as
 \begin{align*}
-S=\begin{pmatrix}
-s & 1-s \\
-1-s & s
-\end{pmatrix}\text.
+\kappa(+,+) = \kappa(-,-) &= s \\
+\kappa(+,-) = \kappa(-,+) &= 1-s,\quad\text{ where }\,s\in \mathbb{C}\text.
 \end{align*}
-Using $\vec{b} = (b_1, b_2, b_3)$, we can write the post-processed observable as
+Using the above definition of post processing we get
 \begin{align*}
-\A &= \sum S\B\\
-&=\sum \dfrac{1}{2} \begin{pmatrix}
-s & 1-s \\
-1-s & s
-\end{pmatrix}
-(\id + \vec{b}\cdot\vec{\sigma})\\
-&=\sum \dfrac{1}{2} \begin{pmatrix}
-s & 1-s \\
-1-s & s
-\end{pmatrix}
-\begin{pmatrix}
-1+b_3 & b_1-ib_2 \\
-b_1+ib_2 & 1-b_3
-\end{pmatrix}\\
-&=\cdots\\
-&=\sum \dfrac{1}{2}\left((1-s)\begin{pmatrix}
-0 & 1 \\
-1 & 0
-\end{pmatrix}
-(\id + \vec{b}\cdot\vec{\sigma})+s(\id + \vec{b}\cdot\vec{\sigma})\right)
+\B(+1) &= \kappa(+,+)\A(+1) + \kappa(+,-)\A(-1) \\
+&=\frac{1}{2}(s(\id + \vec{a}\cdot\vec{\sigma}) + (1-s)(\id - \vec{a}\cdot\vec{\sigma}))\\
+&=\frac{1}{2}(\id + (2s-1)\vec{a}\cdot\vec{\sigma}),\\
+\B(-1) &= \dfrac{1}{2}(\id - (2s-1)\vec{a}\cdot\vec{\sigma})\\
+\Rightarrow \B(\pm 1) &= \frac{1}{2}(\id \pm (2s-1)\vec{a}\cdot\vec{\sigma})\text.
 \end{align*}
+So the chosen post-processing applied on the observable $\A$ yields an observable $\B$, which is almost the same as $\A$, but with the added noise factor $(2s-1)$. 
+
 
 \end{example}
 
-We defined post-processing for discrete observables, since this is what we'll use later in this thesis. In the definition of post processing for a general observable, the sum is replaced with an integral and $\kappa(\cdot, Y)$ is a probability measure and $\kappa(X, \cdot)$ is $\salg_\A$-measurable for every $X\in\salg_\A$.
+We defined post-processing for discrete observables, since it has more use later in this thesis. In the definition of post processing for a general observable, the sum is replaced with an integral and $\kappa(\cdot, Y)$ is a probability measure and $\kappa(X, \cdot)$ is $\salg_\A$-measurable for every $X\in\salg_\A$.
 
 
 %\begin{example}
@@ -758,7 +756,7 @@ A suitable channel for our measurement model is the swap gate, $\sigma_{SWAP}$, 
 \begin{align*}
 \sigma_{SWAP}(\rho \otimes \xi) = \xi \otimes \rho \text.
 \end{align*} 
-So the measurement model for our observable is $\mm = \langle \hi, \xi, \sigma_{SWAP}, \F \rangle$. To conclude that this in fact is a proper measurement model for $\A(X)$, the probability reproducibility condition from equation (\ref{probability_reproducibility}) needs to be verified. 
+So the measurement model for our observable is $\mm = \langle \hi, \xi, \sigma_{SWAP}, \F \rangle$. To conclude that this in fact is a proper measurement model for $\A$, the probability reproducibility condition from equation (\ref{probability_reproducibility}) needs to be verified. 
 
 From the left hand side of equation (\ref{probability_reproducibility}) we get
 \begin{align*}
@@ -796,19 +794,19 @@ The chosen measurement model satisfies the probability reproducibility condition
 Before discussing sequential and repeatable measurements in detail, we need to define instruments. Instruments are closely related to the previously defined measurement models and are extremely useful tools in the kind of measurements studied in this thesis.
 
 \subsection{Instruments}
-Observables are identified with positive operator-valued measures (POVMs), which represent the outcome of a measurement, but they don't tell how a measurement alters the original quantum state. If a measurement is made using only a POVM, there is no possibility of making additional measurements to the already measured state. Measurement and state after measurement can be described using an instrument, which allows a measurement to the possibly changed quantum state.
+Observables are identified with positive operator-valued measures (POVMs), which represent the outcome of a measurement, but they don't tell how a measurement alters the original quantum state. If a measurement is made using only a POVM, there is no possibility of making additional measurements to the already measured state. A measurement and a state after the measurement can be described using an instrument, which allows a measurement to the possibly changed quantum state.
 %--- JATKUVAN SUUREEN INSTRUMENTIN MÄÄRITELMÄ ----------
-A general definition for an instrument can be given using the definition of a measurement model or measure. After performing the measurement of the observable $\A$ by using the measurement $\mm = \langle \ki, \xi, \V, \F \rangle$, a measurement of another observable $\B$ can be done on the system. The result of this is the joint probability distribution for the values of $\A$ and $\B$. After the measurement of $\A$ an $\B$ give the results $x$ and $y$ respectively, the probability for a measured state $\rho$ and state of the probe system $\xi$ is acquired from the formula
+A general definition for an instrument can be given using the definition of a measurement model or measure. After performing the measurement of the observable $\A$ by using the measurement $\mm = \langle \ki, \xi, \V, \F \rangle$, a measurement of another observable $\B$ can be done on the system. The result of this is the joint probability distribution for the values of $\A$ and $\B$. After the measurement of $\A$ an $\B$ give the results $X$ and $Y$ respectively, the probability for a measured state $\rho$ and state of the probe system $\xi$ is acquired from the formula
 \begin{equation}
-\tr[\V(\rho \otimes \xi)(\B(y)\otimes \F(x))]\mathrm{.}
+\tr[\V(\rho \otimes \xi)(\B(Y)\otimes \F(X))]\mathrm{.}
 \end{equation}
 A measurement model for $\B$ is not required similarly as for the measurement of $\A$, since the measurement of $\B$ is considered as a direct measure to the state. The probability formula can also be written as
 \begin{equation*}
-\tr[\V(\rho \otimes \xi)(\B(y)\otimes \F(x))] = \tr[\B(y)\tr_{\ki}[\V(\rho \otimes \xi)(\id \otimes \F(x))]],
+\tr[\V(\rho \otimes \xi)(\B(Y)\otimes \F(X))] = \tr[\B(Y)\tr_{\ki}[\V(\rho \otimes \xi)(\id \otimes \F(X))]],
 \end{equation*}
 where the lower index on trace means partial trace over the Hilbert space $\ki$. The partial trace in the previous equation is defined as 
 \begin{equation}
-\ins(\rho) := \tr_{\ki}[\V(\rho \otimes \xi)(\id \otimes \F(x))]\text.
+\ins(\rho) := \tr_{\ki}[\V(\rho \otimes \xi)(\id \otimes \F(X))]\text.
 \end{equation}
 
 
@@ -856,7 +854,7 @@ An instrument describing a discrete observable $\A$ is a collection of completel
 A similar definition for an instrument describing a continuous observable can be obtained by using a collection from the related sigma-algebra $X\in\salg_\A$ instead of the element $x\in\Omega_\A$ in the definition above. 
 
 
-The dual of the instrument $\I$ in the previous definition is defined by the equation $\tr[L \I_x (T)] = \tr[\I_x^* (L)T]$, where $L \in \mathcal{L}(\hi)$ and $T \in \tc (\hi)$. $I_x^*$ is the instrument of the observable $\A$ in Heisenberg picture and $\I_x$ the instrument in the Schrödinger picture. The instrument $\I_x$ performs a measure of the observable $\A$ to a state $\rho$ giving result $x$ and what's left is the new state $\I_x(\rho)$. The probability for this is $\tr[\I_x(\rho)] = \tr[\rho \A(x)]$.
+The dual of the instrument $\I$ in the previous definition is defined by the equation $\tr[L \I_x (T)] = \tr[\I_x^* (L)T]$, where $L \in \mathcal{L}(\hi)$ and $T \in \tc (\hi)$. $\I_x^*$ is the instrument of the observable $\A$ in Heisenberg picture and $\I_x$ the instrument in the Schrödinger picture. The instrument $\I_x$ performs a measure of the observable $\A$ to a state $\rho$ giving result $x$ and what's left is the new state $\I_x(\rho)$. The probability for this is $\tr[\I_x(\rho)] = \tr[\rho \A(x)]$.
 
 An example of an instrument for a discrete variable is the Lüders instrument, which is defined using the square root of the observable in the following way.
 
@@ -893,7 +891,7 @@ is a probability measure for the joint probability of the observables $\A$ and $
 \tr[\I_{X\times Y}^{\mm_{ab}}(\rho)] &= \tr[\I_Y^{\mm_b} \circ \I_X^{\mm_a}(\rho)] \\
 &= \tr[\I_X^{\mm_a}(\rho)\B(Y)]\text{.}
 \end{align*}
-This probability can be interpreted as measuring the observable $\B$ for the unnormalized state $\I_X^{\mm_a}(\rho)$ giving the result $Y$. This unnormalized state however depends on the measurement of $\A$ giving the result $X$. In this case it's natural to describe the situation using conditional probabilities. Then it can be said that the measurement of the observable $\B$ gives the result $Y$ if the measurement of the $A$ gives the result $X$.
+This probability can be interpreted as measuring the observable $\B$ for the unnormalized state $\I_X^{\mm_a}(\rho)$ giving the result $Y$. This unnormalized state however depends on the measurement of $\A$ giving the result $X$. In this case it's natural to describe the situation using conditional probabilities. Then it can be said that the measurement of the observable $\B$ gives the result $Y$ if the measurement of $\A$ gives the result $X$.
 
 
 \subsection{Repeatable Measurements}\label{sec_repeatable}
@@ -910,7 +908,23 @@ This condition describes the so called weak repeatability of a measurement, whic
 \begin{align*}
 \I_{X \times Y}^{\mm_{aa}}(\rho) = \I_{X \cap Y}^{\mm_a}(\rho) \quad \forall X,Y \in \salg, \rho \in \tila(\hi)\text{.}
 \end{align*}
-Repeatable measurements of the observable $\A$ can be performed, if the measurement $\mm$ is repeatable.
+Repeatable measurements of the observable $\A$ can be performed, if the measurement $\mm$ is repeatable. 
+\begin{example}
+The Lüders channel of a sharp qubit observable is discussed with more detail in example (\ref{sharp_qubit_luders}), but it can also be used to show a repeatable measurement. Let $\A$ be a sharp qubit observable defined in equation (\ref{sharp_qubit}). The corresponding instrument is
+\begin{align*}
+\I_\pm(\rho) = \sqrt{\A(\pm 1)} \rho\sqrt{\A(\pm 1)},
+\end{align*}
+which clearly is weakly repeatable, since
+\begin{align*}
+\tr[\I_\pm \circ \I_\pm(\rho)] &= \tr[\I_\pm(\sqrt{\A(\pm 1)}\rho\sqrt{\A(\pm 1)})]\\
+&= \tr[\sqrt{\A(\pm 1)}\sqrt{\A(\pm 1)}\rho\sqrt{\A(\pm 1)}\sqrt{\A(\pm 1)}]\\
+&= \tr[\sqrt{\A(\pm 1)}\rho\sqrt{\A(\pm 1)}]\\
+&= \tr[\I_\pm(\rho)],
+\end{align*}
+since the sharp observable $\A$ is a projection.
+
+
+\end{example}
 
 A fundamental result when discussing repeatable measurements is that only discrete observables admit repeatable measurements, as stated in the following theorem \cite{MQP}.
 \begin{theorem}
@@ -934,7 +948,7 @@ For an observable $\A$ on $\hi$, a channel $\V : \lin(\ki) \rightarrow \lin(\hi)
 
 This means that the channel $\V$ and observable $\A$ are compatible if they are parts of the same instrument $\I$.
 %----------------- EXAMPLE OF COMPATIBILITY HERE -------------------------------
-\begin{example}
+\begin{example}\label{sharp_qubit_luders}
 Consider the sharp qubit observable introduced in the first chapter, $\A(\pm1) = \frac{1}{2}(\id \pm \vec{r}\cdot\vec{\sigma})$. Let's choose the Lüders instrument of the observable $\A$, $\I_{\pm1}(\rho) = \sqrt{\A(\pm1)}\rho\sqrt{\A(\pm1)}$. $\I$ is clearly an $\A$-compatible instrument, since
 \begin{align*}
 \tr[\I_{\pm1}(\rho)] = \tr[A(\pm1)\rho],\quad \sum_x\tr[\I_x(\rho)] = \tr[\rho]\text{.}
@@ -1011,7 +1025,7 @@ Non-disturbance may hold also in different cases than the one described above, b
 
 Another example of pairs of observables that do not disturb one another we'll consider an informationally complete observable $\B$. In this case each state $\rho$ is uniquely determined by the probabilities $\tr[\rho\B(y)]$. The non-disturbance condition (\ref{nondisturbance}) now yields $\I_{\Omega}(\rho) = \rho$. But for non-trivial observables $\A$ the state is altered in some manner and even the informationally complete observable $\B$ is disturbed.
 
-Non-disturbance does not imply a symmetric relation between the two observables $\A$ and $\B$. The pair is said to be non-disturbing if $\A$ can be measured without disturbing $\B$ or vice versa. In the case that the measurement of either observable does not disturb the other, the pair of observables is said to be mutually non-disturbing, which is a stronger relation than just non-disturbance\cite{heinosaari_simultaneous}.
+Non-disturbance does not imply a symmetric relation between the two observables $\A$ and $\B$. The pair is said to be non-disturbing if $\A$ can be measured without disturbing $\B$ or vice versa. In the case that the measurement of either observable does not disturb the other, the pair of observables is said to be mutually non-disturbing, which is a stronger relation than non-disturbance\cite{heinosaari_simultaneous}.
 
 %-------------------------------------------------------------------------------
 The concept of non-disturbance brings us close to the next important feature, jointly measurable observables.
@@ -1048,14 +1062,14 @@ Next we'll define a qubit observable $\E$, for which
 \end{align*}
 Now let $\E^{\alpha, \vec{a}}$ and $\E^{\beta, \vec{b}}$ be two different observables. There are many ways to check which conditions need to hold for these two observables to be jointly measurable\cite{heinosaari_notes_on_joint}. The following formulation for unbiased variables is probably the simplest.
 
-If $\alpha = \beta = 1$, and $\norm{\vec{a}}\leq 1,\, \norm{\vec{b}}\leq 1$, then $\E^{\alpha, \vec{a}}$ and $\E^{\beta, \vec{b}}$ are jointly measurable if and only if 
+If $\alpha = \beta = 1$, and $\norm{\vec{a}}\leq 1,\, \norm{\vec{b}}\leq 1$, then $\E^{1, \vec{a}}$ and $\E^{1, \vec{b}}$ are jointly measurable if and only if 
 \begin{align*}
 \norm{\vec{a}+\vec{b}} + \norm{\vec{a} - \vec{b}} \leq 2\text{.}
 \end{align*}
 If this requirement is fulfilled, the joint observable $\M$ is a four outcome variable defined by 
 \begin{align*}
-\E^{\alpha, \vec{a}}(1) = \M(1,1) + \M(1,0) &,\quad \E^{\beta, \vec{b}}(1) = \M(1,1) + \M(0,1) \\
-\E^{\alpha, \vec{a}}(0) = \M(0,0) + \M(0,1) &,\quad \E^{\beta, \vec{b}}(0) = \M(0,0) + \M(1,0)\text{.} \\
+\E^{1, \vec{a}}(1) = \M(1,1) + \M(1,0) &,\quad \E^{1, \vec{b}}(1) = \M(1,1) + \M(0,1) \\
+\E^{1, \vec{a}}(0) = \M(0,0) + \M(0,1) &,\quad \E^{1, \vec{b}}(0) = \M(0,0) + \M(1,0)\text{.} \\
 \end{align*}
 In fact, it follows that the joint observable is determined by a single effect, $\M(1,1)$. The other effects can be derived from this as well as the original observables $\E$. Thus, the joint observable is of the form $\M(1,1) = \frac{1}{2}(\gamma\id + \vec{g}\cdot\vec{\sigma})$ for some parameters $\gamma \in \real, \vec{g} \in \real^3$. Keeping in mind that every one of $\M(0,0), \M(0,1), \M(1,0)$ also needs to be an effect leads to some constraints for these parameters $\gamma$ and $\vec{g}$. After a bit of calculation, we can write these using the variables defined in the effects $\A(\alpha,\vec{a}),\,\A(\beta,\vec{b})$ and $\M(1,1)$
 \begin{align*}
@@ -1114,7 +1128,7 @@ For every observable $\A$ an $\A$-channel $\V_{\A}$ having the universality feat
 
 \noindent \textit{Proof} Let $(\ki, \hat{\A}, V)$ be a minimal Naimark dilation of the observable $\A$. The dilation being minimal means that the set $\lbrace \sum_x c_x\hat{\A}(x)V\psi, \quad c_x\in \mathbb{C}, \psi \in \hi \rbrace$ is dense in the Hilbert space $\ki$. Let $\V_{\A}$ be a channel with input space $\hi$ and output space $\ki$ defined as 
 \begin{align*}
-\V_{\A}(\rho) \sum_x\hat{\A}(x)V\rho V^*\hat{\A}(x),
+\V_{\A}(\rho) = \sum_x\hat{\A}(x)V\rho V^*\hat{\A}(x),
 \end{align*}
 which is an $\A$-channel since
 \begin{align*}
@@ -1142,9 +1156,9 @@ Moreover, the observable $\B'$ satisfies the equation (\ref{universality_joint})
 \end{align*}
 The only thing needed to complete the proof is to show that for each observable $\B$, which is jointly measurable with the observable $\A$, the channel $\Gamma^{\B}$ defined in equation (\ref{gammachannel}) exists.
 
-Since $\A$ and $\B$ are jointly measurable, they have a joint observable $\M$ with a Naimark dilation $(\ki', \hat{\M}, V')$. We'll define a sharp observable $\hat{\A}'$ as the margin of $\hat{\M}$, $\hat{\A}'(X) = \sum_y \hat{\M}(x,y)$. From $\A(x) = \sum_Y \M(x,y)$ it follows that $(\ki', \hat{\A}', V')$ is a Naimark dilation of the observable $\A$. We chose the original Naimark dilation of $\A$ to be minimal, so there exists an isometric operator $J$ such that
+Since $\A$ and $\B$ are jointly measurable, they have a joint observable $\M$ with a Naimark dilation $(\ki', \hat{\M}, V')$. We'll define a sharp observable $\hat{\A}'$ as the margin of $\hat{\M}$, $\hat{\A}'(x) = \sum_y \hat{\M}(x,y)$. From $\A(x) = \sum_Y \M(x,y)$ it follows that $(\ki', \hat{\A}', V')$ is a Naimark dilation of the observable $\A$. We chose the original Naimark dilation of $\A$ to be minimal, so there exists an isometric operator $J$ such that
 \begin{align*}
-J : \ki \rightarrow \ki', \quad \hat{A}'(x)J = J\hat{A}(x), \quad V' = JV \text. 
+J : \ki \rightarrow \ki', \quad \hat{\A}'(x)J = J\hat{\A}(x), \quad V' = JV \text. 
 \end{align*}
 From $\hat{\M}(x,y) \hat{\M}(x', y') = \delta_{xx'}\hat{\M}(x,y)$ it follows that
 \begin{equation}\label{universality_aux}
@@ -1161,9 +1175,9 @@ and define the channel $\Gamma^{\B}$ as
 Now by the result can be verified with a straightforward calculation
 \begin{align*}
 &\Gamma^{\B} \circ \V_{\A}(\rho) \\
-=&\Gamma^{\B} \left(\sum_{x'} \hat{A}(x') V\rho V^*\hat{A}(x') \right)\\
-=&\sum_{x,y} \tr\left[\left(\sum_{x'}\hat{A}(x')V\rho V^*\hat{A}(x') \right)J^*\M(x,y)J \right]\ket{y}\bra{x} \\
-=&\sum_{x,y}\tr\left[\hat{\A}(x)V\rho V^*\hat{A}(x)J^*\hat{M}(x,y)J \right]\ket{y}\bra{y}\\
+=&\Gamma^{\B} \left(\sum_{x'} \hat{\A}(x') V\rho V^*\hat{\A}(x') \right)\\
+=&\sum_{x,y} \tr\left[\left(\sum_{x'}\hat{\A}(x')V\rho V^*\hat{\A}(x') \right)J^*\M(x,y)J \right]\ket{y}\bra{x} \\
+=&\sum_{x,y}\tr\left[\hat{\A}(x)V\rho V^*\hat{\A}(x)J^*\hat{M}(x,y)J \right]\ket{y}\bra{y}\\
 =& \V^{\B}(\rho),
 \end{align*}
 where equation (\ref{universality_aux}) was used again.\hfill $\square$
@@ -1189,15 +1203,15 @@ V^*(\beta_i, \beta_j) = a\beta_i,\quad (\beta_i, \beta_j) \in \ki, a \in \mathbb
 \end{align*}
 With this, an instrument can be defined
 \begin{align*}
-\I(\rho) = \hat{\A}V\rho V^*\hat{\A}
+\I(\rho) = \hat{\A}(x)V\rho V^*\hat{\A(x)}
 \end{align*}
-and a channel $\V_\A(\rho)$, summing over every $X$ as 
+and a channel $\V_\A(\rho)$, summing over every $x$ as 
 \begin{align*}
-\V_\A(\rho) = \sum_X \hat{\A}(X) V\rho V^*\hat{\A}(X) = \sum_X \I_X(\rho)
+\V_\A(\rho) = \sum_x \hat{\A}(x) V\rho V^*\hat{\A}(x) = \sum_x \I_x(\rho)
 \end{align*}
 we get
 \begin{align*}
-\tr[\I_X(\rho)] = \tr[\hat{\A} V \rho V^* \hat{\A}] = \tr[\hat{\A} V \rho V^*] = \tr[\rho \A]\text{.}
+\tr[\I_x(\rho)] = \tr[\hat{\A}(x) V \rho V^* \hat{\A}(x)] = \tr[\hat{\A}(x) V \rho V^*] = \tr[\rho \A(x)]\text{.}
 \end{align*}
 So there exists a channel $\V_\A$ compatible with $\A$.
 \end{example}
@@ -1248,7 +1262,7 @@ b^* & 1-a
 \end{psmallmatrix}
 $, where $a,b \in \mathbb{C}$ we get
 \begin{align*}
-\tr\left[\rho\A(X) \right] &= \tr\left[\begin{psmallmatrix}
+\tr\left[\rho\A(x) \right] &= \tr\left[\begin{psmallmatrix}
 a & b \\
 b^* & 1-a
 \end{psmallmatrix} \begin{psmallmatrix}
@@ -1260,7 +1274,7 @@ b^* & 1-a
 \alpha_0b^* & \alpha_1(1-a)
 \end{psmallmatrix} \right] \\
 &= \alpha_0a + \alpha_1(1-a), \\
-\tr\left[\V(\rho)\A(X)\otimes \id \right] &= \tr\left[\begin{psmallmatrix}
+\tr\left[\V(\rho)\A(x)\otimes \id \right] &= \tr\left[\begin{psmallmatrix}
 a &0 &0 &0 \\
 0 &0 &0 &0 \\
 0 &0 &0 &0 \\
@@ -1278,7 +1292,7 @@ a &0 &0 &0 \\
 0 &0 &0 &\alpha_1(1-a)
 \end{psmallmatrix} \right] \\
 &= \alpha_0a + \alpha_1(1-a),\\
-\tr\left[\V(\rho) \id \otimes \A(X) \right] &=  \tr\left[\begin{psmallmatrix}
+\tr\left[\V(\rho) \id \otimes \A(x) \right] &=  \tr\left[\begin{psmallmatrix}
 a &0 &0 &0 \\
 0 &0 &0 &0 \\
 0 &0 &0 &0 \\
@@ -1290,7 +1304,7 @@ a &0 &0 &0 \\
 0 & 0 & 0 &\alpha_1
 \end{psmallmatrix} \right]\\
 &= \alpha_0a + \alpha_1(1-a)\\
-\Rightarrow\tr[\rho\A(X)] &= \tr[\V(\rho)\A(X)\otimes\id] = \tr[\V(\rho)\id\otimes\A(X)],
+\Rightarrow\tr[\rho\A(x)] &= \tr[\V(\rho)\A(x)\otimes\id] = \tr[\V(\rho)\id\otimes\A(x)],
 \end{align*}
 hence the channel $\V$ broadcasts the observable $\A$.
 
@@ -1449,7 +1463,7 @@ holds. Thus using the previous proposition we can conclude that
 \end{align*}
 This clearly means that the constructed measurement yields more information after each step until the limit $d-1$ is reached. Yet, this doesn't need to be the limit and there still exists measurements which provide more information no matter how many times a measurement is made.
 
-The final thing with respect to repeating a measurement is to showcase an instrument, which doesn't saturate at all. Let $\A$ and $\B$ be POVM's and let the related outcome spaces $(\Omega_\A, \salg_\A)$ and $(\Omega_\B, \salg_\B)$ be of the form of the standard Borel $\sigma$-algebra, that is $\salg_\A = \borel(\Omega_\A)$ and $\salg_\B = \borel(\Omega_\A)$. For $\A \pp \B$ to hold, there needs to exist a Markov kernel
+The final thing with respect to repeating a measurement is to showcase an instrument, which doesn't saturate at all. Let $\A$ and $\B$ be POVMs and let the related outcome spaces $(\Omega_\A, \salg_\A)$ and $(\Omega_\B, \salg_\B)$ be of the form of the standard Borel $\sigma$-algebra, that is $\salg_\A = \borel(\Omega_\A)$ and $\salg_\B = \borel(\Omega_\A)$. For $\A \pp \B$ to hold, there needs to exist a Markov kernel
 \begin{align*}
 \kappa: \salg_\A \times \Omega_\B \rightarrow [0,1]
 \end{align*}
