@@ -120,9 +120,9 @@
         {Department of Physics and Astronomy}%
         {TAMMERO, TUOMAS:}%Tekijän suku- ja etunimi
         {Sequential Quantum Measurements}%Tutkielman otsikko
-        {Master's thesis, XX pages}% , YY appendix pages
+        {Master's thesis, 48 pages}% , YY appendix pages
         {Theoretical physics}% Oppiaine
-        {November 2018}%tutkielman valmistumisvuosi ja -kuukausi
+        {December 2018}%tutkielman valmistumisvuosi ja -kuukausi
 
 This thesis studies the field of quantum measurements and more precisely sequential measurements. The aim is to provide answers to questions like when is performing a sequential or a repeated measurement meaningful, or even possible. This is important in order to understand what type of information can be acquired when performing measurements on quantum states. 
 
@@ -465,9 +465,9 @@ An observable $\A$ is sharp, if $\A(X)$ is a projection for every $X \in \salg$.
 
 \begin{example}
 Let $\hi = \cc$. In $\hi$ sharp observables have only two possible outcomes, labelled here as $\pm 1$. Respectively, the corresponding operators $\A(-1)$ and $\A(1)$ are either $O$, $\id$ or some other one dimensional projection. If we exclude $O$ and $\id$, choose a vector $\vec{r} \in \mathbb{R}^3$, we can define
-\begin{align*}
+\begin{equation}\label{sharp_qubit}
 \A(-1) = \frac{1}{2}(\id - \vec{r}\cdot\vec{\sigma}), \quad \A(1) = \frac{1}{2}(\id + \vec{r}\cdot\vec{\sigma}),
-\end{align*}
+\end{equation}
 where $\vec{\sigma}$ denotes a vector with the Pauli matrices as elements. The corresponding selfadjoint operator for the observable $\A$ is 
 \begin{align*}
 A = \sum_i i\A(i) = \vec{r}\cdot \vec{\sigma}\text{.}
@@ -488,23 +488,36 @@ Often in literature a single observable $\A$ is said to be informationally compl
 %---------------- EXAMPLE: SIC POVM -------------------
 \begin{example}
 %As an example of a informationally complete observable, we'll use the simplest symmetric informationally complete observable or SIC-POVM for short\cite{sic_povm}. aaa
-Let $\hi = \mathbb{C}^d$, of $\hi$ and let $P$ be a set of $d^2$ normalized vectors $\ket{\psi_k}$, for which
+Let $\hi = \mathbb{C}^2$ and let P be a set of $\dim (\hi) = 4$ normalized vectors $\lbrace \ket{\psi_1}, \ket{\psi_2}, \ket{\psi_3}, \ket{\psi_4} \rbrace$, for which
 \begin{align*}
-|\braket{\psi_k|\psi_j}|^2 = \dfrac{1}{d+1}, \quad k \neq j \text.
+|\braket{\psi_k | \psi_j }| = \dfrac{1}{3},\quad k \neq j\text.
 \end{align*}
-The POVM elements corresponding to $P$ are the projections $\ket{\psi_k}\bra{\psi_k}/d = \Pi_k/d$. In order to have an informationally complete $P$, the operators $\Pi_k$ must be linearly independent, since they need to span the entire space of operators. To show linear independence we need to consider the rank of the Gram matrix of the operators. Using the previous equation we get
+The POVM elements corresponding to $P$ are the scaled operators $\ket{\psi_k}\bra{\psi_k}/3 = \Pi_k/3$. In order to have an informationally complete P, the operators $\Pi_k$ must be linearly independent, since they need to span the entire space of operators.\cite{sic_povm}  
+
+In the qubit case, the four vectors needed to construct these operators are easy find. Let the first of the four vectors be 
 \begin{align*}
-\tr[\Pi_j^*\Pi_k]  = \dfrac{d\delta_{jk} + 1}{d + 1}\text.
-\end{align*} 
-
-
-
-Due to the Kronecker delta and the constant value $d$, the Gram matrix here is circulant, meaning that each row is a cyclic shift of the previous. By definition the eigenvalue of each row is found using a Fourier transform to one of the rows and no eigenvalues are zero. This can be seen by choosing a complex number $\zeta\neq 1$ for which $\zeta^d = 1$, i.e. the $d$th root of unity defined by $\zeta=e^{2\pi i k/d}$ where $k = 1,\,\dots,d-1$, we can define a new orthonormal basis $\lbrace \varphi_i \rbrace$ using the set of vectors $\lbrace \psi_j \rbrace$ by
-\begin{align*}
-\varphi_i = \dfrac{1}{\sqrt{d+1}}\sum_{j=0}^d \zeta^{ij}\psi_j\text.
+\ket{\psi_1} = \begin{pmatrix}
+1\\
+0
+\end{pmatrix}\text.
 \end{align*}
+Then we can assume that the first component of each of the other three vectors is $1/\sqrt{3}$ to meet the necessary requirement. The other component similarly needs to be rotated accordingly, so to say, since the first component of the three vectors is same. In fact, the following three vectors can be used to construct the wanted POVM
+\begin{align*}
+\ket{\psi_2} = \begin{pmatrix}
+\dfrac{1}{\sqrt{3}}\\
+\sqrt{\dfrac{2}{3}}
+\end{pmatrix},\quad \ket{\psi_2} = \begin{pmatrix}
+\dfrac{1}{\sqrt{3}}\\
+\sqrt{\dfrac{2}{3}}e^{2i\pi/3}
+\end{pmatrix},\quad \ket{\psi_3} = \begin{pmatrix}
+\dfrac{1}{\sqrt{3}}\\
+\sqrt{\dfrac{2}{3}}e^{-2i\pi/3}
+\end{pmatrix},
+\end{align*}
+and the elements of $P$ are $\ket{\psi_1}\bra{\psi_1}, \ket{\psi_2}\bra{\psi_2}, \ket{\psi_3}\bra{\psi_3}$ and $\ket{\psi_4}\bra{\psi_4}$.
 
-Hence, the Gram matrix has a full rank, the projections $\Pi_k$ are linearly independent and $P$ is informationally complete\cite{sic_povm}.
+
+
 
 \end{example}
 
@@ -895,7 +908,23 @@ This condition describes the so called weak repeatability of a measurement, whic
 \begin{align*}
 \I_{X \times Y}^{\mm_{aa}}(\rho) = \I_{X \cap Y}^{\mm_a}(\rho) \quad \forall X,Y \in \salg, \rho \in \tila(\hi)\text{.}
 \end{align*}
-Repeatable measurements of the observable $\A$ can be performed, if the measurement $\mm$ is repeatable.
+Repeatable measurements of the observable $\A$ can be performed, if the measurement $\mm$ is repeatable. 
+\begin{example}
+The Lüders channel of a sharp qubit observable is discussed with more detail in example (\ref{sharp_qubit_luders}), but it can also be used to show a repeatable measurement. Let $\A$ be a sharp qubit observable defined in equation (\ref{sharp_qubit}). The corresponding instrument is
+\begin{align*}
+\I_\pm(\rho) = \sqrt{\A(\pm 1)} \rho\sqrt{\A(\pm 1)},
+\end{align*}
+which clearly is weakly repeatable, since
+\begin{align*}
+\tr[\I_\pm \circ \I_\pm(\rho)] &= \tr[\I_\pm(\sqrt{\A(\pm 1)}\rho\sqrt{\A(\pm 1)})]\\
+&= \tr[\sqrt{\A(\pm 1)}\sqrt{\A(\pm 1)}\rho\sqrt{\A(\pm 1)}\sqrt{\A(\pm 1)}]\\
+&= \tr[\sqrt{\A(\pm 1)}\rho\sqrt{\A(\pm 1)}]\\
+&= \tr[\I_\pm(\rho)],
+\end{align*}
+since the sharp observable $\A$ is a projection.
+
+
+\end{example}
 
 A fundamental result when discussing repeatable measurements is that only discrete observables admit repeatable measurements, as stated in the following theorem \cite{MQP}.
 \begin{theorem}
@@ -919,7 +948,7 @@ For an observable $\A$ on $\hi$, a channel $\V : \lin(\ki) \rightarrow \lin(\hi)
 
 This means that the channel $\V$ and observable $\A$ are compatible if they are parts of the same instrument $\I$.
 %----------------- EXAMPLE OF COMPATIBILITY HERE -------------------------------
-\begin{example}
+\begin{example}\label{sharp_qubit_luders}
 Consider the sharp qubit observable introduced in the first chapter, $\A(\pm1) = \frac{1}{2}(\id \pm \vec{r}\cdot\vec{\sigma})$. Let's choose the Lüders instrument of the observable $\A$, $\I_{\pm1}(\rho) = \sqrt{\A(\pm1)}\rho\sqrt{\A(\pm1)}$. $\I$ is clearly an $\A$-compatible instrument, since
 \begin{align*}
 \tr[\I_{\pm1}(\rho)] = \tr[A(\pm1)\rho],\quad \sum_x\tr[\I_x(\rho)] = \tr[\rho]\text{.}
@@ -1033,14 +1062,14 @@ Next we'll define a qubit observable $\E$, for which
 \end{align*}
 Now let $\E^{\alpha, \vec{a}}$ and $\E^{\beta, \vec{b}}$ be two different observables. There are many ways to check which conditions need to hold for these two observables to be jointly measurable\cite{heinosaari_notes_on_joint}. The following formulation for unbiased variables is probably the simplest.
 
-If $\alpha = \beta = 1$, and $\norm{\vec{a}}\leq 1,\, \norm{\vec{b}}\leq 1$, then $\E^{\alpha, \vec{a}}$ and $\E^{\beta, \vec{b}}$ are jointly measurable if and only if 
+If $\alpha = \beta = 1$, and $\norm{\vec{a}}\leq 1,\, \norm{\vec{b}}\leq 1$, then $\E^{1, \vec{a}}$ and $\E^{1, \vec{b}}$ are jointly measurable if and only if 
 \begin{align*}
 \norm{\vec{a}+\vec{b}} + \norm{\vec{a} - \vec{b}} \leq 2\text{.}
 \end{align*}
 If this requirement is fulfilled, the joint observable $\M$ is a four outcome variable defined by 
 \begin{align*}
-\E^{\alpha, \vec{a}}(1) = \M(1,1) + \M(1,0) &,\quad \E^{\beta, \vec{b}}(1) = \M(1,1) + \M(0,1) \\
-\E^{\alpha, \vec{a}}(0) = \M(0,0) + \M(0,1) &,\quad \E^{\beta, \vec{b}}(0) = \M(0,0) + \M(1,0)\text{.} \\
+\E^{1, \vec{a}}(1) = \M(1,1) + \M(1,0) &,\quad \E^{1, \vec{b}}(1) = \M(1,1) + \M(0,1) \\
+\E^{1, \vec{a}}(0) = \M(0,0) + \M(0,1) &,\quad \E^{1, \vec{b}}(0) = \M(0,0) + \M(1,0)\text{.} \\
 \end{align*}
 In fact, it follows that the joint observable is determined by a single effect, $\M(1,1)$. The other effects can be derived from this as well as the original observables $\E$. Thus, the joint observable is of the form $\M(1,1) = \frac{1}{2}(\gamma\id + \vec{g}\cdot\vec{\sigma})$ for some parameters $\gamma \in \real, \vec{g} \in \real^3$. Keeping in mind that every one of $\M(0,0), \M(0,1), \M(1,0)$ also needs to be an effect leads to some constraints for these parameters $\gamma$ and $\vec{g}$. After a bit of calculation, we can write these using the variables defined in the effects $\A(\alpha,\vec{a}),\,\A(\beta,\vec{b})$ and $\M(1,1)$
 \begin{align*}

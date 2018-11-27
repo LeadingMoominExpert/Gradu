@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6880 64-bit) (preloaded format=pdflatex 2018.11.26)  26 NOV 2018 13:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6880 64-bit) (preloaded format=pdflatex 2018.11.26)  27 NOV 2018 16:34
 entering extended mode
 **./ThesisTammero.tex
 (ThesisTammero.tex
@@ -440,21 +440,21 @@ LaTeX Font Info:    Try loading font information for U+euf on input line 422.
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
 [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22]
-[23]
-Overfull \hbox (12.23239pt too wide) detected at line 957
+[23] [24]
+Overfull \hbox (12.23239pt too wide) detected at line 986
 []
  []
 
-[24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38]
-[39] [40] [41] [42] [43] [44] [45] [46] (ThesisTammero.bbl) [47]
+[25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39]
+[40] [41] [42] [43] [44] [45] [46] [47] (ThesisTammero.bbl) [48]
 
 AED: lastpage setting LastPage
 (ThesisTammero.aux) ) 
 Here is how much of TeX's memory you used:
- 5112 strings out of 492969
- 69490 string characters out of 3135837
- 160639 words of memory out of 3000000
- 8837 multiletter control sequences out of 15000+200000
+ 5114 strings out of 492969
+ 69523 string characters out of 3135837
+ 161660 words of memory out of 3000000
+ 8839 multiletter control sequences out of 15000+200000
  18100 words of font info for 52 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,20n,43p,810b,439s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -480,9 +480,9 @@ rs/ttammero/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/doublestroke/dsrom12.
 pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/euler/eufm10.pfb><
 C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/
 Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on ThesisTammero.pdf (51 pages, 411083 bytes).
+Output written on ThesisTammero.pdf (52 pages, 411506 bytes).
 PDF statistics:
- 563 PDF objects out of 1000 (max. 8388607)
+ 565 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

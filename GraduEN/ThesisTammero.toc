@@ -12,11 +12,11 @@
 \contentsline {subsection}{\numberline {2.3}Repeatable Measurements}{23}
 \contentsline {section}{\numberline {3}Properties of Quantum Measurements}{24}
 \contentsline {subsection}{\numberline {3.1}Compatibility}{24}
-\contentsline {subsection}{\numberline {3.2}Non-Disturbance}{25}
+\contentsline {subsection}{\numberline {3.2}Non-Disturbance}{26}
 \contentsline {subsection}{\numberline {3.3}Joint Measurability}{27}
 \contentsline {subsection}{\numberline {3.4}Universality}{29}
 \contentsline {subsection}{\numberline {3.5}Broadcasting}{33}
 \contentsline {section}{\numberline {4}Applications of Sequential Measurements}{36}
-\contentsline {subsection}{\numberline {4.1}Saturation of Repeated Measurements}{36}
-\contentsline {subsection}{\numberline {4.2}Approximate Repeatability}{43}
-\contentsline {section}{References}{47}
+\contentsline {subsection}{\numberline {4.1}Saturation of Repeated Measurements}{37}
+\contentsline {subsection}{\numberline {4.2}Approximate Repeatability}{44}
+\contentsline {section}{References}{48}
